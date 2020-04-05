@@ -48,10 +48,7 @@ resource "aws_instance" "bastion" {
 
   user_data = templatefile(
     "${path.module}/user_data.sh",
-    {
-      upstream_map = var.upstream_map
-      email        = var.email
-    },
+    {}
   )
 
   root_block_device {
