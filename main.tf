@@ -52,8 +52,9 @@ resource "aws_instance" "bastion" {
   )
 
   root_block_device {
-    volume_type = var.volume_type
-    volume_size = var.volume_size
+    volume_type           = var.volume_type
+    volume_size           = var.volume_size
+    delete_on_termination = true
   }
 
   tags        = merge(map("Name", format("%s-bastion", var.name)), var.tags)
