@@ -30,7 +30,7 @@ variable "instance_type" {
 
 variable "volume_type" {
   type    = string
-  default = "gp"
+  default = "gp2"
 }
 
 variable "volume_size" {
