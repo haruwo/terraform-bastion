@@ -60,9 +60,3 @@ resource "aws_instance" "bastion" {
   tags        = merge(map("Name", format("%s-bastion", var.name)), var.tags)
   volume_tags = merge(map("Name", format("%s-bastion", var.name)), var.tags)
 }
-
-resource "aws_eip" "bastion" {
-  instance = aws_instance.bastion.id
-  vpc      = true
-  tags     = merge(map("Name", format("%s-bastion", var.name)), var.tags)
-}
