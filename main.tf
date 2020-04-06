@@ -37,14 +37,12 @@ resource "aws_iam_instance_profile" "bastion_profile" {
 # instance
 # ---------------------------------------------------------------------------- #
 resource "aws_instance" "bastion" {
-  ami                         = "ami-07f4cb4629342979c" // Ubuntu 18.04
-  instance_type               = var.instance_type
-  vpc_security_group_ids      = [data.aws_security_group.default.id]
-  subnet_id                   = var.subnet_id
-  iam_instance_profile        = aws_iam_instance_profile.bastion_profile.name
-  ebs_optimized               = true
-  key_name                    = var.key_name
-  associate_public_ip_address = false
+  ami                    = "ami-07f4cb4629342979c" // Ubuntu 18.04
+  instance_type          = var.instance_type
+  vpc_security_group_ids = [data.aws_security_group.default.id]
+  subnet_id              = var.subnet_id
+  iam_instance_profile   = aws_iam_instance_profile.bastion_profile.name
+  key_name               = var.key_name
 
   user_data = templatefile(
     "${path.module}/user_data.sh",
